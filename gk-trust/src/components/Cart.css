@@ -37,3 +37,9 @@ span{
 .shopping-cart-icon{
     padding:45px;
 }
+
+@media screen and (max-width:768px) {
+    .filter-checkout{
+        padding: 0px;
+    }
+}

@@ -10,12 +10,13 @@ import { TextField } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 const ProductListingPage = ({ setCheckoutData }) => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const [filterData, setFilterData] = useState({
     color: [],
     gender: [],
     type: [],
+    price:[]
   });
   const [productsData, setProductsData] = useState([]);
   const [apiData, setApiData] = useState([]);
@@ -90,6 +91,20 @@ const ProductListingPage = ({ setCheckoutData }) => {
         return filterData.type.includes(itm.type);
       });
     }
+    console.log("f-d-p",filterData)
+    if (filterData.price.length > 0) {
+      //let x = filterData.price.split("-");
+      if(filterData.price.length >1){
+
+        copyProductsData = copyProductsData.filter((itm)=>{
+          return itm.price >= Number(filterData.price[0]) &&  itm.price <= Number(filterData.price[1])
+        })
+      }else{
+        copyProductsData = copyProductsData.filter((itm)=>{
+          return itm.price <= Number(filterData.price[0])
+        })
+      }
+    }
     setProductsData(copyProductsData);
   };
 
@@ -140,7 +155,7 @@ const ProductListingPage = ({ setCheckoutData }) => {
     <div>
       <Header />
       <div className="header-filter">
-        <diV>
+        <div>
           <TextField
             type="search"
             onChange={(e) => setText(e.target.value)}
@@ -150,7 +165,7 @@ const ProductListingPage = ({ setCheckoutData }) => {
           <button onClick={() => handleSearch()}>
             <SearchIcon />
           </button>
-        </diV>
+        </div>
 
         <button className="toggle-btn" onClick={handleToggle}>
           <FilterAltIcon />
@@ -166,6 +181,11 @@ const ProductListingPage = ({ setCheckoutData }) => {
               {/* </div> */}
             </Grid>
           )}
+                      <Grid item md={3} display = {{xs:"none", md:"block"}}>
+              {/* <div style={{ display: "block", height:"auto" }}> */}
+                <Filter handleFilter={handleFilter} />
+              {/* </div> */}
+            </Grid>
           
             <Grid
               className="products-Section"
