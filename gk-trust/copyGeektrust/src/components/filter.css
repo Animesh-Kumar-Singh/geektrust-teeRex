@@ -1,0 +1,22 @@
+.filter {
+    display:flex;
+    
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    align-items: baseline;
+    height:auto;
+    line-height: 1.6rem;
+    /* padding: 25px; */
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    .filter{
+        width: 71vw;
+        height:auto;
+    }
+}
+
+span {
+    font-weight: normal !important;
+}
