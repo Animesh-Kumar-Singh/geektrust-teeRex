@@ -1,0 +1,41 @@
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px;
+    background-color: lightgray;
+    padding: 0 5% 0 5%;
+    
+}
+
+.cart-icon {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.papa {
+    padding: 50px;
+}
+
+.product-filter {
+    padding-right: 200px !important;
+}
+
+.header-filter{
+    display:flex;
+    justify-content: center;
+}
+
+.products-Section{
+    height: 500px;
+    overflow-y: scroll;
+}
+
+@media screen and (min-width: 768px) {
+    .toggle-btn {
+      display:none;
+    }
+
+  }
